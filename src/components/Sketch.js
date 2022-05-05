@@ -7,37 +7,47 @@ export default function Sketch() {
     let gridArrays = []
 
     const [blackMarker, setBlackMarker] = useState(false)
-
-    const blah = () => {
-        
-        gridArrays.forEach((gridArray)=>{
-            console.log(gridArray)
-            gridArray.backgroundColor="black"
-        })
-    }
-
+    
     const makeGrids = () => {
+        //make # of divs and push it to array
         for (let i=0;i<100;i++){
-            gridArrays.push(<div className='grids' onMouseOver={blackMarker? blah : blah}  ></div>)
+            gridArrays.push(
+                <div 
+                    className='grids' 
+                    Style="" 
+                    onMouseOver={blackMarker? colorBlack: eraser}
+                    
+                    >
+                    {/* */}
+                </div>)
         }
-        // console.log(gridArrays)
-
+        //display grids
         let showGrids = gridArrays.map((gridArray)=>{
             return (
-                <div>
+                <>
                     {gridArray}
-                </div>
+                </>
             )
         })
         return showGrids
     }
 
-    const activateBlackMarker = () => {
-        console.log('black on', blackMarker)
-        setBlackMarker((blackMarker)=> blackMarker = !blackMarker)
+
+    const colorBlack = (e) => {
+        e.target.style.backgroundColor="black"
     }
 
+    const activateBlackMarker = () => {
+        setBlackMarker(true)
+    }
 
+    const eraser = (e) => {
+        e.target.style.backgroundColor="white"
+    }
+
+    const activateEraser = () => {
+        setBlackMarker(false)
+    }
 
     return (
         <div className='sketch-container'>
@@ -46,8 +56,8 @@ export default function Sketch() {
             </div>
             <div className="btns-container">
                 <Button className='bg-dark' onClick={activateBlackMarker}>Black Marker</Button>
-                <Button className='bg-dark'>Eraser</Button>
-                <Button className='bg-dark'>Clear</Button>
+                <Button className='bg-dark' onClick={activateEraser}>Eraser</Button>
+                <Button className='bg-dark' onClick={()=>window.location.reload()}>Clear</Button>
                 <Button className='bg-dark'>Change Grid Size</Button>
             </div>
         </div>
