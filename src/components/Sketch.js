@@ -7,6 +7,8 @@ export default function Sketch() {
     let gridArrays = []
     //black marker activate
     const [blackMarker, setBlackMarker] = useState(false)
+    const [eraserMarker, setEraserMarker] = useState(false)
+    const [rainbowMarker, setRainbowMarker] = useState(false)
     //create grids
     const makeGrids = (rows,cols) => {
         //make # of divs and push it to array
@@ -15,9 +17,8 @@ export default function Sketch() {
                 <div 
                     className='grids' 
                     Style="" 
-                    onMouseOver={blackMarker? colorBlack: eraser}
+                    onMouseOver={blackMarker? colorBlack:  eraserMarker? eraser : rainbowMarker? colorRainbow: ""}
                     >
-                    {/* */}
                 </div>)
         }
         //display grids
@@ -36,6 +37,8 @@ export default function Sketch() {
     }
     const activateBlackMarker = () => {
         setBlackMarker(true)
+        setEraserMarker(false)
+        setRainbowMarker(false)
     }
     //eraser functions
     const eraser = (e) => {
@@ -43,37 +46,49 @@ export default function Sketch() {
     }
     const activateEraser = () => {
         setBlackMarker(false)
+        setEraserMarker(true)
+        setRainbowMarker(false)
+    }
+    //rainbow button functions
+    function randomRainbow() {
+        let letters = "0123456789ABCDEF";
+        let color = "#";
+        for(let i=0; i <6; i++){
+            color += letters[Math.floor(Math.random() * 16)]
+        }
+        return color;
+    }
+
+    const colorRainbow = (e) => {
+        e.target.style.backgroundColor=randomRainbow()
+    }
+
+    const activateRainbowMarker = () => {
+        setRainbowMarker(true)
+        setBlackMarker(false)
+        setEraserMarker(false)
     }
     //reset function
     const reset = () => {
         const grids = document.querySelectorAll('.grids')
+        //turn grid back to white
         grids.forEach(grid=>{
             grid.style.backgroundColor="white"
         })
-    }
-    //change grid size function
-    const changeGridSize = () => {
-
-        // let rows = prompt("Number of rows?")
-        // let cols = prompt("Number of columns?")
-
-        // makeGrids(rows,cols)
-
-        // console.log(grids)
-        // grids.style.gridTemplateColumns = `repeat(${cols}, 1fr)`
-        // grids.style.gridTemplateRows = `repeat(${rows}, 1fr)`
+        //empty array
+        gridArrays.splice(0, gridArrays.length)
     }
 
     return (
         <div className='sketch-container'>
             <div className='grids-container'>
-                {makeGrids(10,10)||changeGridSize}
+                {makeGrids(10,10)}
             </div>
             <div className="btns-container">
                 <Button className='bg-dark' onClick={activateBlackMarker}>Black Marker</Button>
+                <Button className='bg-dark' onClick={activateRainbowMarker}>Rainbow Marker</Button>
                 <Button className='bg-dark' onClick={activateEraser}>Eraser</Button>
                 <Button className='bg-dark' onClick={reset}>Reset</Button>
-                <Button className='bg-dark' onClick={changeGridSize}>Change Grid Size</Button>
             </div>
         </div>
     )
