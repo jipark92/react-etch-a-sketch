@@ -17,13 +17,14 @@
 }
 
 .sketch-container {
-  border: 1px solid rgb(160, 25, 25);
+  /* border: 1px solid rgb(160, 25, 25); */
   height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
   align-content: center;
   flex-direction: column;
+  gap: 2rem;
 }
 
 .grids-container {
@@ -35,10 +36,14 @@
 }
 
 .grids {
-    border: 1px solid rgb(62, 201, 20);
+    border: 1px solid black;
     height: 50px;
     width: 50px;
 }
+
+/* .grids:hover{
+  background-color: black;
+} */
 
 .btns-container {
   /* border: 1px solid red; */
