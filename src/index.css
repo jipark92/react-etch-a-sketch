@@ -42,3 +42,11 @@
   align-items: center;
   gap: 1rem;
 }
+
+.about-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  width: 100%;
+}
