@@ -4,13 +4,46 @@
   box-sizing: border-box;
 }
 
-.header-container {
-  border: 1px solid black;
-  height: 5vh;
+.header-container a {
+  /* border: 1px solid black; */
+  text-decoration: none;
 }
 
+
 .main-container {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   height: 100vh;
   width: 100vw;
+}
+
+.sketch-container {
+  border: 1px solid rgb(160, 25, 25);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+.grids-container {
+  /* border: 1px solid rgb(160, 25, 25); */
+  display: grid;
+  grid-template-columns: repeat(10, 50px);
+  grid-template-rows: repeat(10,50px);
+  justify-content: center;
+}
+
+.grids {
+    border: 1px solid rgb(62, 201, 20);
+    height: 50px;
+    width: 50px;
+}
+
+.btns-container {
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
