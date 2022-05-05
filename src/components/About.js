@@ -21,7 +21,7 @@ export default function About() {
                     <Accordion.Header>Created By?</Accordion.Header>
                     <Accordion.Body>
                         <p>Ji Park</p>
-                        <a href="https://github.com/norfkorean/react-rock-paper-scissors" target="_blank">GitHub</a>
+                        <a href="https://github.com/norfkorean/react-etch-a-sketch" target="_blank">GitHub</a>
                     </Accordion.Body>
                 </Accordion.Item>
             </Accordion>
